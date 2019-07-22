@@ -52,6 +52,29 @@ class LinkedList<T> {
     }
   }
 
+  public void delete(int i){
+    try {
+      if (i == 0){
+        this.head = head.next;
+      }
+      else {
+        int c = 1;
+        Node count = this.head;
+        while (count != null){
+          if (c == i){
+            count.next = count.next.next;
+            break;
+          }
+          count = count.next;
+          c++;
+        }
+      }
+    }
+    catch(Exception  e){
+      throw new java.lang.Error("Wrong Index");
+    }
+  }
+
   public void insertAtBeginning(T d){
     Node<T> temp = new Node<T>(d);
     if (head == null){
@@ -69,8 +92,7 @@ class LinkedList<T> {
   }
 }
 
-
-class LinkedList {
+class Main {
   public static void main(String[] args) {
     LinkedList<Integer> l = new LinkedList<>();
     l.append(5);
@@ -81,6 +103,7 @@ class LinkedList {
     l.append(100);
     l.display();
     l.pop();
+    l.delete(1);
     l.display();
     l.insertAtBeginning(88);
     l.display();
